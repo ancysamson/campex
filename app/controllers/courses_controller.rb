@@ -61,6 +61,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  def get_course_types
+    @course_types = CourseType.where(department_id: params[:department_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course

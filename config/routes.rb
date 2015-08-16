@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :courses do
+    collection do
+      get 'get_course_types'
+    end
+  end
   resources :course_types
   resources :departments
   root 'dashboard#index'
