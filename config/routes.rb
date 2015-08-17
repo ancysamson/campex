@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :paper_types
-  resources :courses do
-    resources :batches, shallow: true
+  resources :courses, shallow: true do
+    resources :batches do
+      resources :terms
+    end
     
     collection do
       get 'get_course_types'
