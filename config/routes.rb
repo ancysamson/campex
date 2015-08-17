@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :courses do
+    resources :batches, shallow: true
+    
     collection do
       get 'get_course_types'
     end
