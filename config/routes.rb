@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :positions
   resources :staff_categories
   resources :paper_types
   resources :courses, shallow: true do
