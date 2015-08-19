@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :staff_grades
   resources :positions
   resources :staff_categories
   resources :paper_types
