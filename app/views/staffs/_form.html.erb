@@ -1,0 +1,122 @@
+<%= form_for(@staff) do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.text_field :staff_id %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_joining %><br>
+    <%= f.date_select :date_of_joining %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+  <%= f.label :gender %><br>
+  <%= f.radio_button(:gender, "male", checked: true) %>
+  <%= f.label :male%>
+  <%= f.radio_button(:gender, "female") %>
+  <%= f.label :female %>
+   
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+   <%= f.label :department %><br>
+   <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :staff_position_id %><br>
+    <%= f.select :staff_position_id, options_from_collection_for_select(StaffPosition.all, :id, :name) %>
+   
+  </div>
+  <div class="field">
+    <%= f.label :staff_grade_id %><br>
+  <%= f.select :staff_grade_id, options_from_collection_for_select(StaffGrade.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :qualification %><br>
+    <%= f.text_field :qualification %>
+  </div>
+  <div class="field">
+    <%= f.label :experience_info %><br>
+    <%= f.text_area :experience_info %>
+  </div>
+  <div class="field">
+    <%= f.label :experience_years %><br>
+    <%= f.number_field :experience_years %>
+  </div>
+  <div class="field">
+    <%= f.label :experience_months %><br>
+    <%= f.number_field :experience_months %>
+  </div>
+  <div class="field">
+    <%= f.label :marital_status %><br>
+    <%= f.select :marital_status, ['single', 'married'] %>
+  </div>
+  <div class="field">
+    <%= f.label :father_name %><br>
+    <%= f.text_field :father_name %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_name %><br>
+    <%= f.text_field :mother_name %>
+  </div>
+  <div class="field">
+    <%= f.label :spouse_name %><br>
+    <%= f.text_field :spouse_name %>
+  </div>
+  <div class="field">
+    <%= f.label :blood_group %><br>
+   <%= f.select :blood_group, ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'] %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br>
+    <%= f.country_select("nationality") %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_no %><br>
+    <%= f.text_field :mobile_no %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account_no %><br>
+    <%= f.text_field :bank_account_no %>
+  </div>
+  <div class="field">
+    <%= f.label :pan_no %><br>
+    <%= f.text_field :pan_no %>
+  </div>
+  <div class="field">
+    <%= f.label :adhaar_no %><br>
+    <%= f.text_field :adhaar_no %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

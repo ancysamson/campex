@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820034730) do
+ActiveRecord::Schema.define(version: 20150820050221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,40 @@ ActiveRecord::Schema.define(version: 20150820034730) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "staffs", force: :cascade do |t|
+    t.string   "staff_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_joining"
+    t.string   "email"
+    t.string   "gender"
+    t.date     "dob"
+    t.integer  "department_id"
+    t.integer  "staff_position_id"
+    t.integer  "staff_grade_id"
+    t.string   "qualification"
+    t.text     "experience_info"
+    t.integer  "experience_years"
+    t.integer  "experience_months"
+    t.string   "marital_status"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.string   "spouse_name"
+    t.string   "blood_group"
+    t.string   "nationality"
+    t.string   "address"
+    t.string   "mobile_no"
+    t.string   "bank_account_no"
+    t.string   "pan_no"
+    t.string   "adhaar_no"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "staffs", ["department_id"], name: "index_staffs_on_department_id", using: :btree
+  add_index "staffs", ["staff_grade_id"], name: "index_staffs_on_staff_grade_id", using: :btree
+  add_index "staffs", ["staff_position_id"], name: "index_staffs_on_staff_position_id", using: :btree
+
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -101,5 +135,8 @@ ActiveRecord::Schema.define(version: 20150820034730) do
   add_foreign_key "batches", "courses"
   add_foreign_key "course_types", "departments"
   add_foreign_key "courses", "course_types"
+  add_foreign_key "staffs", "departments"
+  add_foreign_key "staffs", "staff_grades"
+  add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
 end
