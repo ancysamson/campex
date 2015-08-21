@@ -15,6 +15,7 @@
       <tr>
         <td><%= class_timing.name %></td>
         <td><%= link_to 'Show', class_timing %></td>
+        <td><%= link_to 'Periods', class_timing_periods_path(class_timing) %></td>
         <td><%= link_to 'Edit', edit_class_timing_path(class_timing) %></td>
         <td><%= link_to 'Destroy', class_timing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
