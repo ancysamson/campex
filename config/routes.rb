@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :paper_types
   resources :courses, shallow: true do
     resources :batches do
-      resources :terms
+      resources :terms do
+        resources :papers
+      end
     end
     
     collection do
