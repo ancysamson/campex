@@ -1,0 +1,33 @@
+<%= form_for(@staff_grade) do |f| %>
+  <% if @staff_grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff_grade.errors.count, "error") %> prohibited this staff_grade from being saved:</h2>
+
+      <ul>
+      <% @staff_grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :max_periods_per_day %><br>
+    <%= f.number_field :max_periods_per_day %>
+  </div>
+  <div class="field">
+    <%= f.label :max_periods_per_week %><br>
+    <%= f.number_field :max_periods_per_week %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

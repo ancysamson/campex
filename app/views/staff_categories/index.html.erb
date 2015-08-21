@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Staff Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_categories.each do |staff_category| %>
+      <tr>
+        <td><%= staff_category.name %></td>
+        <td><%= staff_category.code %></td>
+        <td><%= link_to 'Show', staff_category %></td>
+        <td><%= link_to 'Edit', edit_staff_category_path(staff_category) %></td>
+        <td><%= link_to 'Destroy', staff_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff category', new_staff_category_path %>

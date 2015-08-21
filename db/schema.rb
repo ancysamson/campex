@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821003228) do
+ActiveRecord::Schema.define(version: 20150821042230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,65 @@ ActiveRecord::Schema.define(version: 20150821003228) do
 
   add_index "periods", ["class_timing_id"], name: "index_periods_on_class_timing_id", using: :btree
 
+  create_table "staff_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staff_grades", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "priority"
+    t.integer  "max_periods_per_day"
+    t.integer  "max_periods_per_week"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "staff_positions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "staff_category_id"
+  end
+
+  add_index "staff_positions", ["staff_category_id"], name: "index_staff_positions_on_staff_category_id", using: :btree
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "staff_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_joining"
+    t.string   "email"
+    t.string   "gender"
+    t.date     "dob"
+    t.integer  "department_id"
+    t.integer  "staff_position_id"
+    t.integer  "staff_grade_id"
+    t.string   "qualification"
+    t.text     "experience_info"
+    t.integer  "experience_years"
+    t.integer  "experience_months"
+    t.string   "marital_status"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.string   "spouse_name"
+    t.string   "blood_group"
+    t.string   "nationality"
+    t.string   "address"
+    t.string   "mobile_no"
+    t.string   "bank_account_no"
+    t.string   "pan_no"
+    t.string   "adhaar_no"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "staffs", ["department_id"], name: "index_staffs_on_department_id", using: :btree
+  add_index "staffs", ["staff_grade_id"], name: "index_staffs_on_staff_grade_id", using: :btree
+  add_index "staffs", ["staff_position_id"], name: "index_staffs_on_staff_position_id", using: :btree
+
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -118,5 +177,9 @@ ActiveRecord::Schema.define(version: 20150821003228) do
   add_foreign_key "papers", "paper_types"
   add_foreign_key "papers", "terms"
   add_foreign_key "periods", "class_timings"
+  add_foreign_key "staff_positions", "staff_categories"
+  add_foreign_key "staffs", "departments"
+  add_foreign_key "staffs", "staff_grades"
+  add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
 end

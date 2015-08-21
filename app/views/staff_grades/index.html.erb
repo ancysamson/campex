@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Staff Grades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Priority</th>
+      <th>Max periods per day</th>
+      <th>Max periods per week</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_grades.each do |staff_grade| %>
+      <tr>
+        <td><%= staff_grade.name %></td>
+        <td><%= staff_grade.priority %></td>
+        <td><%= staff_grade.max_periods_per_day %></td>
+        <td><%= staff_grade.max_periods_per_week %></td>
+        <td><%= link_to 'Show', staff_grade %></td>
+        <td><%= link_to 'Edit', edit_staff_grade_path(staff_grade) %></td>
+        <td><%= link_to 'Destroy', staff_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff grade', new_staff_grade_path %>
