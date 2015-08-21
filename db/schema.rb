@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821003228) do
+ActiveRecord::Schema.define(version: 20150821042230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,30 @@ ActiveRecord::Schema.define(version: 20150821003228) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "papers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "paper_type_id"
+    t.integer  "term_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "papers", ["paper_type_id"], name: "index_papers_on_paper_type_id", using: :btree
+  add_index "papers", ["term_id"], name: "index_papers_on_term_id", using: :btree
+
+  create_table "periods", force: :cascade do |t|
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.boolean  "is_break"
+    t.integer  "class_timing_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "periods", ["class_timing_id"], name: "index_periods_on_class_timing_id", using: :btree
+
   create_table "staff_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -93,10 +117,12 @@ ActiveRecord::Schema.define(version: 20150821003228) do
 
   create_table "staff_positions", force: :cascade do |t|
     t.string   "name"
-    t.string   "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "staff_category_id"
   end
+
+  add_index "staff_positions", ["staff_category_id"], name: "index_staff_positions_on_staff_category_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "staff_id"
@@ -132,30 +158,6 @@ ActiveRecord::Schema.define(version: 20150821003228) do
   add_index "staffs", ["staff_grade_id"], name: "index_staffs_on_staff_grade_id", using: :btree
   add_index "staffs", ["staff_position_id"], name: "index_staffs_on_staff_position_id", using: :btree
 
-  create_table "papers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "code"
-    t.integer  "paper_type_id"
-    t.integer  "term_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "papers", ["paper_type_id"], name: "index_papers_on_paper_type_id", using: :btree
-  add_index "papers", ["term_id"], name: "index_papers_on_term_id", using: :btree
-
-  create_table "periods", force: :cascade do |t|
-    t.string   "name"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.boolean  "is_break"
-    t.integer  "class_timing_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "periods", ["class_timing_id"], name: "index_periods_on_class_timing_id", using: :btree
-
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -172,12 +174,12 @@ ActiveRecord::Schema.define(version: 20150821003228) do
   add_foreign_key "batches", "courses"
   add_foreign_key "course_types", "departments"
   add_foreign_key "courses", "course_types"
-  add_foreign_key "staffs", "departments"
-  add_foreign_key "staffs", "staff_grades"
-  add_foreign_key "staffs", "staff_positions"
   add_foreign_key "papers", "paper_types"
   add_foreign_key "papers", "terms"
   add_foreign_key "periods", "class_timings"
-
+  add_foreign_key "staff_positions", "staff_categories"
+  add_foreign_key "staffs", "departments"
+  add_foreign_key "staffs", "staff_grades"
+  add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
 end

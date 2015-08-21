@@ -17,7 +17,7 @@
   </div>
  <div class="field">
    <%= f.label :category %><br>
-   <%= select_tag :staff_category, options_from_collection_for_select(StaffCategory.all, :id, :name) %>
+   <%= f.select :staff_category_id, options_from_collection_for_select(StaffCategory.all, :id, :name) %>
  </div>
   <div class="actions">
     <%= f.submit %>

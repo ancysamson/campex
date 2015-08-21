@@ -1,5 +1,7 @@
 class StaffPosition < ActiveRecord::Base
-	def to_s
-		self.name
-	end
+	belongs_to :staff_category
+	
+  def to_s
+    self.name
+  end
 end
