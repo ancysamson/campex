@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820050221) do
+ActiveRecord::Schema.define(version: 20150821003228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20150820050221) do
   end
 
   add_index "batches", ["course_id"], name: "index_batches_on_course_id", using: :btree
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "subject_stucture"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "class_timings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "course_types", force: :cascade do |t|
     t.string   "name"
@@ -119,6 +132,30 @@ ActiveRecord::Schema.define(version: 20150820050221) do
   add_index "staffs", ["staff_grade_id"], name: "index_staffs_on_staff_grade_id", using: :btree
   add_index "staffs", ["staff_position_id"], name: "index_staffs_on_staff_position_id", using: :btree
 
+  create_table "papers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "paper_type_id"
+    t.integer  "term_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "papers", ["paper_type_id"], name: "index_papers_on_paper_type_id", using: :btree
+  add_index "papers", ["term_id"], name: "index_papers_on_term_id", using: :btree
+
+  create_table "periods", force: :cascade do |t|
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.boolean  "is_break"
+    t.integer  "class_timing_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "periods", ["class_timing_id"], name: "index_periods_on_class_timing_id", using: :btree
+
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -138,5 +175,9 @@ ActiveRecord::Schema.define(version: 20150820050221) do
   add_foreign_key "staffs", "departments"
   add_foreign_key "staffs", "staff_grades"
   add_foreign_key "staffs", "staff_positions"
+  add_foreign_key "papers", "paper_types"
+  add_foreign_key "papers", "terms"
+  add_foreign_key "periods", "class_timings"
+
   add_foreign_key "terms", "batches"
 end

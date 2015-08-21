@@ -1,0 +1,14 @@
+$('#papers_table').find('tbody')
+.append('<tr>')
+.append('<%= "<td> #{@paper.name} </td>".html_safe %>')
+.append('<%= "<td> #{@paper.code} </td>".html_safe %>')
+.append('<%= "<td> #{@paper.paper_type} </td>".html_safe %>')        
+.append('<%= "<td> #{link_to 'Show', @paper} </td>".html_safe %>')
+.append('<td> <%= link_to 'Edit', edit_paper_path(@paper) %> </td>')
+.append('<td> <%= link_to 'Destroy', @paper, method: :delete, data: { confirm: 'Are you sure?' } %> </td>')
+.append('</tr>')
+        
+        
+        
+        
+        
