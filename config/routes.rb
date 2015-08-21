@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :boards
   resources :paper_types
   resources :courses, shallow: true do
     resources :batches do
