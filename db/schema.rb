@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821042230) do
+ActiveRecord::Schema.define(version: 20150831043314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20150821042230) do
 
   add_index "papers", ["paper_type_id"], name: "index_papers_on_paper_type_id", using: :btree
   add_index "papers", ["term_id"], name: "index_papers_on_term_id", using: :btree
+
+  create_table "papers_staffs", id: false, force: :cascade do |t|
+    t.integer "paper_id"
+    t.integer "staff_id"
+  end
+
+  add_index "papers_staffs", ["paper_id"], name: "index_papers_staffs_on_paper_id", using: :btree
+  add_index "papers_staffs", ["staff_id"], name: "index_papers_staffs_on_staff_id", using: :btree
 
   create_table "periods", force: :cascade do |t|
     t.string   "name"
@@ -176,6 +184,8 @@ ActiveRecord::Schema.define(version: 20150821042230) do
   add_foreign_key "courses", "course_types"
   add_foreign_key "papers", "paper_types"
   add_foreign_key "papers", "terms"
+  add_foreign_key "papers_staffs", "papers"
+  add_foreign_key "papers_staffs", "staffs"
   add_foreign_key "periods", "class_timings"
   add_foreign_key "staff_positions", "staff_categories"
   add_foreign_key "staffs", "departments"
