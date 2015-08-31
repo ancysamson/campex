@@ -1,5 +1,5 @@
 class StaffsController < ApplicationController
-  before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :set_staff, only: [:show, :edit, :update, :destroy, :assign_papers]
 
   # GET /staffs
   # GET /staffs.json
@@ -61,6 +61,9 @@ class StaffsController < ApplicationController
     end
   end
 
+  def assign_papers
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_staff
@@ -69,6 +72,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:staff_id, :first_name, :last_name, :date_of_joining, :email, :gender, :dob, :department_id, :staff_position_id, :staff_grade_id, :qualification, :experience_info, :experience_years, :experience_months, :marital_status, :father_name, :mother_name, :spouse_name, :blood_group, :nationality, :address, :mobile_no, :bank_account_no, :pan_no, :adhaar_no)
+      params.require(:staff).permit(:staff_id, :first_name, :last_name, :date_of_joining, :email, :gender, :dob, :department_id, :staff_position_id, :staff_grade_id, :qualification, :experience_info, :experience_years, :experience_months, :marital_status, :father_name, :mother_name, :spouse_name, :blood_group, :nationality, :address, :mobile_no, :bank_account_no, :pan_no, :adhaar_no, :paper_ids => [])
     end
 end

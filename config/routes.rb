@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :staffs
+  resources :staffs do
+    member do
+      get 'assign_papers'
+    end
+  end
   resources :staff_grades
   resources :staff_positions
   resources :staff_categories

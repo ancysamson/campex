@@ -63,6 +63,7 @@
         <td><%= staff.pan_no %></td>
         <td><%= staff.adhaar_no %></td>
         <td><%= link_to 'Show', staff %></td>
+        <td><%= link_to 'Assign Papers', assign_papers_staff_path(staff) %></td>
         <td><%= link_to 'Edit', edit_staff_path(staff) %></td>
         <td><%= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
