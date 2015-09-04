@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :term_id %><br>
-    <%=  f.select :term_id, options_for_select({'FHGFHG'=>7,'GHFGFGHF'=>8}) %>
+    <%=  f.select :term_id, options_for_select(Course.current_term_of_batches) %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br>
