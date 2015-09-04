@@ -1,0 +1,4 @@
+json.array!(@students) do |student|
+  json.extract! student, :id, :name, :gender, :blood_group, :dob, :birth_place, :born_in, :religion, :reservation_category_id, :caste_id, :nationality_id, :address_line1, :address_line2, :post_office, :taluk, :district, :state, :pincode, :country_id, :comm_address_line1, :comm_address_line2, :comm_post_office, :comm_taluk, :comm_district, :comm_state, :comm_pincode, :comm_country_id, :hostel_required, :ex_service, :nss, :ncc, :board_id, :stream_id, :board_name, :year_of_passing, :blind, :deaf, :orthopedic, :arts, :sports, :no_of_chances, :illiteracy_eradication, :twelfth_yop, :twelfth_yos, :twelfth_regno, :twelfth_institution, :twelfth_tc_no, :twelfth_tc_date, :tenth_yop, :tenth_yos, :tenth_regno, :tenth_institution, :email, :aadhar_no, :mobile_no, :phone_no, :bank_account
+  json.url student_url(student, format: :json)
+end

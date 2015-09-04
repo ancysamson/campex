@@ -1,0 +1,137 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Blood group</th>
+      <th>Dob</th>
+      <th>Birth place</th>
+      <th>Born in</th>
+      <th>Religion</th>
+      <th>Reservation category</th>
+      <th>Caste</th>
+      <th>Nationality</th>
+      <th>Address line1</th>
+      <th>Address line2</th>
+      <th>Post office</th>
+      <th>Taluk</th>
+      <th>District</th>
+      <th>State</th>
+      <th>Pincode</th>
+      <th>Country</th>
+      <th>Comm address line1</th>
+      <th>Comm address line2</th>
+      <th>Comm post office</th>
+      <th>Comm taluk</th>
+      <th>Comm district</th>
+      <th>Comm state</th>
+      <th>Comm pincode</th>
+      <th>Comm country</th>
+      <th>Hostel required</th>
+      <th>Ex service</th>
+      <th>Nss</th>
+      <th>Ncc</th>
+      <th>Board</th>
+      <th>Stream</th>
+      <th>Board name</th>
+      <th>Year of passing</th>
+      <th>Blind</th>
+      <th>Deaf</th>
+      <th>Orthopedic</th>
+      <th>Arts</th>
+      <th>Sports</th>
+      <th>No of chances</th>
+      <th>Illiteracy eradication</th>
+      <th>Twelfth yop</th>
+      <th>Twelfth yos</th>
+      <th>Twelfth regno</th>
+      <th>Twelfth institution</th>
+      <th>Twelfth tc no</th>
+      <th>Twelfth tc date</th>
+      <th>Tenth yop</th>
+      <th>Tenth yos</th>
+      <th>Tenth regno</th>
+      <th>Tenth institution</th>
+      <th>Email</th>
+      <th>Aadhar no</th>
+      <th>Mobile no</th>
+      <th>Phone no</th>
+      <th>Bank account</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.gender %></td>
+        <td><%= student.blood_group %></td>
+        <td><%= student.dob %></td>
+        <td><%= student.birth_place %></td>
+        <td><%= student.born_in %></td>
+        <td><%= student.religion %></td>
+        <td><%= student.reservation_category %></td>
+        <td><%= student.caste %></td>
+        <td><%= student.nationality_id %></td>
+        <td><%= student.address_line1 %></td>
+        <td><%= student.address_line2 %></td>
+        <td><%= student.post_office %></td>
+        <td><%= student.taluk %></td>
+        <td><%= student.district %></td>
+        <td><%= student.state %></td>
+        <td><%= student.pincode %></td>
+        <td><%= student.country_id %></td>
+        <td><%= student.comm_address_line1 %></td>
+        <td><%= student.comm_address_line2 %></td>
+        <td><%= student.comm_post_office %></td>
+        <td><%= student.comm_taluk %></td>
+        <td><%= student.comm_district %></td>
+        <td><%= student.comm_state %></td>
+        <td><%= student.comm_pincode %></td>
+        <td><%= student.comm_country_id %></td>
+        <td><%= student.hostel_required %></td>
+        <td><%= student.ex_service %></td>
+        <td><%= student.nss %></td>
+        <td><%= student.ncc %></td>
+        <td><%= student.board %></td>
+        <td><%= student.stream %></td>
+        <td><%= student.board_name %></td>
+        <td><%= student.year_of_passing %></td>
+        <td><%= student.blind %></td>
+        <td><%= student.deaf %></td>
+        <td><%= student.orthopedic %></td>
+        <td><%= student.arts %></td>
+        <td><%= student.sports %></td>
+        <td><%= student.no_of_chances %></td>
+        <td><%= student.illiteracy_eradication %></td>
+        <td><%= student.twelfth_yop %></td>
+        <td><%= student.twelfth_yos %></td>
+        <td><%= student.twelfth_regno %></td>
+        <td><%= student.twelfth_institution %></td>
+        <td><%= student.twelfth_tc_no %></td>
+        <td><%= student.twelfth_tc_date %></td>
+        <td><%= student.tenth_yop %></td>
+        <td><%= student.tenth_yos %></td>
+        <td><%= student.tenth_regno %></td>
+        <td><%= student.tenth_institution %></td>
+        <td><%= student.email %></td>
+        <td><%= student.aadhar_no %></td>
+        <td><%= student.mobile_no %></td>
+        <td><%= student.phone_no %></td>
+        <td><%= student.bank_account %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>

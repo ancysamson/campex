@@ -1,0 +1,284 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @student.gender %>
+</p>
+
+<p>
+  <strong>Blood group:</strong>
+  <%= @student.blood_group %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @student.dob %>
+</p>
+
+<p>
+  <strong>Birth place:</strong>
+  <%= @student.birth_place %>
+</p>
+
+<p>
+  <strong>Born in:</strong>
+  <%= @student.born_in %>
+</p>
+
+<p>
+  <strong>Religion:</strong>
+  <%= @student.religion %>
+</p>
+
+<p>
+  <strong>Reservation category:</strong>
+  <%= @student.reservation_category %>
+</p>
+
+<p>
+  <strong>Caste:</strong>
+  <%= @student.caste %>
+</p>
+
+<p>
+  <strong>Nationality:</strong>
+  <%= @student.nationality_id %>
+</p>
+
+<p>
+  <strong>Address line1:</strong>
+  <%= @student.address_line1 %>
+</p>
+
+<p>
+  <strong>Address line2:</strong>
+  <%= @student.address_line2 %>
+</p>
+
+<p>
+  <strong>Post office:</strong>
+  <%= @student.post_office %>
+</p>
+
+<p>
+  <strong>Taluk:</strong>
+  <%= @student.taluk %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @student.district %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @student.state %>
+</p>
+
+<p>
+  <strong>Pincode:</strong>
+  <%= @student.pincode %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @student.country_id %>
+</p>
+
+<p>
+  <strong>Comm address line1:</strong>
+  <%= @student.comm_address_line1 %>
+</p>
+
+<p>
+  <strong>Comm address line2:</strong>
+  <%= @student.comm_address_line2 %>
+</p>
+
+<p>
+  <strong>Comm post office:</strong>
+  <%= @student.comm_post_office %>
+</p>
+
+<p>
+  <strong>Comm taluk:</strong>
+  <%= @student.comm_taluk %>
+</p>
+
+<p>
+  <strong>Comm district:</strong>
+  <%= @student.comm_district %>
+</p>
+
+<p>
+  <strong>Comm state:</strong>
+  <%= @student.comm_state %>
+</p>
+
+<p>
+  <strong>Comm pincode:</strong>
+  <%= @student.comm_pincode %>
+</p>
+
+<p>
+  <strong>Comm country:</strong>
+  <%= @student.comm_country_id %>
+</p>
+
+<p>
+  <strong>Hostel required:</strong>
+  <%= @student.hostel_required %>
+</p>
+
+<p>
+  <strong>Ex service:</strong>
+  <%= @student.ex_service %>
+</p>
+
+<p>
+  <strong>Nss:</strong>
+  <%= @student.nss %>
+</p>
+
+<p>
+  <strong>Ncc:</strong>
+  <%= @student.ncc %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @student.board %>
+</p>
+
+<p>
+  <strong>Stream:</strong>
+  <%= @student.stream %>
+</p>
+
+<p>
+  <strong>Board name:</strong>
+  <%= @student.board_name %>
+</p>
+
+<p>
+  <strong>Year of passing:</strong>
+  <%= @student.year_of_passing %>
+</p>
+
+<p>
+  <strong>Blind:</strong>
+  <%= @student.blind %>
+</p>
+
+<p>
+  <strong>Deaf:</strong>
+  <%= @student.deaf %>
+</p>
+
+<p>
+  <strong>Orthopedic:</strong>
+  <%= @student.orthopedic %>
+</p>
+
+<p>
+  <strong>Arts:</strong>
+  <%= @student.arts %>
+</p>
+
+<p>
+  <strong>Sports:</strong>
+  <%= @student.sports %>
+</p>
+
+<p>
+  <strong>No of chances:</strong>
+  <%= @student.no_of_chances %>
+</p>
+
+<p>
+  <strong>Illiteracy eradication:</strong>
+  <%= @student.illiteracy_eradication %>
+</p>
+
+<p>
+  <strong>Twelfth yop:</strong>
+  <%= @student.twelfth_yop %>
+</p>
+
+<p>
+  <strong>Twelfth yos:</strong>
+  <%= @student.twelfth_yos %>
+</p>
+
+<p>
+  <strong>Twelfth regno:</strong>
+  <%= @student.twelfth_regno %>
+</p>
+
+<p>
+  <strong>Twelfth institution:</strong>
+  <%= @student.twelfth_institution %>
+</p>
+
+<p>
+  <strong>Twelfth tc no:</strong>
+  <%= @student.twelfth_tc_no %>
+</p>
+
+<p>
+  <strong>Twelfth tc date:</strong>
+  <%= @student.twelfth_tc_date %>
+</p>
+
+<p>
+  <strong>Tenth yop:</strong>
+  <%= @student.tenth_yop %>
+</p>
+
+<p>
+  <strong>Tenth yos:</strong>
+  <%= @student.tenth_yos %>
+</p>
+
+<p>
+  <strong>Tenth regno:</strong>
+  <%= @student.tenth_regno %>
+</p>
+
+<p>
+  <strong>Tenth institution:</strong>
+  <%= @student.tenth_institution %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Aadhar no:</strong>
+  <%= @student.aadhar_no %>
+</p>
+
+<p>
+  <strong>Mobile no:</strong>
+  <%= @student.mobile_no %>
+</p>
+
+<p>
+  <strong>Phone no:</strong>
+  <%= @student.phone_no %>
+</p>
+
+<p>
+  <strong>Bank account:</strong>
+  <%= @student.bank_account %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

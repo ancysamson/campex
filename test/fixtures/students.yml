@@ -1,0 +1,117 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  gender: MyString
+  blood_group: MyString
+  dob: 2015-09-03
+  birth_place: MyString
+  born_in: MyString
+  religion: MyString
+  reservation_category_id: 
+  caste_id: 
+  nationality_id: MyString
+  address_line1: MyString
+  address_line2: MyString
+  post_office: MyString
+  taluk: MyString
+  district: MyString
+  state: MyString
+  pincode: MyString
+  country_id: MyString
+  comm_address_line1: MyString
+  comm_address_line2: MyString
+  comm_post_office: MyString
+  comm_taluk: MyString
+  comm_district: MyString
+  comm_state: MyString
+  comm_pincode: MyString
+  comm_country_id: MyString
+  hostel_required: false
+  ex_service: MyString
+  nss: MyString
+  ncc: MyString
+  board_id: 
+  stream_id: 
+  board_name: MyString
+  year_of_passing: MyString
+  blind: MyString
+  deaf: MyString
+  orthopedic: MyString
+  arts: MyString
+  sports: MyString
+  no_of_chances: MyString
+  illiteracy_eradication: MyString
+  twelfth_yop: MyString
+  twelfth_yos: MyString
+  twelfth_regno: MyString
+  twelfth_institution: MyString
+  twelfth_tc_no: MyString
+  twelfth_tc_date: 2015-09-03
+  tenth_yop: MyString
+  tenth_yos: MyString
+  tenth_regno: MyString
+  tenth_institution: MyString
+  email: MyString
+  aadhar_no: MyString
+  mobile_no: MyString
+  phone_no: MyString
+  bank_account: MyString
+
+two:
+  name: MyString
+  gender: MyString
+  blood_group: MyString
+  dob: 2015-09-03
+  birth_place: MyString
+  born_in: MyString
+  religion: MyString
+  reservation_category_id: 
+  caste_id: 
+  nationality_id: MyString
+  address_line1: MyString
+  address_line2: MyString
+  post_office: MyString
+  taluk: MyString
+  district: MyString
+  state: MyString
+  pincode: MyString
+  country_id: MyString
+  comm_address_line1: MyString
+  comm_address_line2: MyString
+  comm_post_office: MyString
+  comm_taluk: MyString
+  comm_district: MyString
+  comm_state: MyString
+  comm_pincode: MyString
+  comm_country_id: MyString
+  hostel_required: false
+  ex_service: MyString
+  nss: MyString
+  ncc: MyString
+  board_id: 
+  stream_id: 
+  board_name: MyString
+  year_of_passing: MyString
+  blind: MyString
+  deaf: MyString
+  orthopedic: MyString
+  arts: MyString
+  sports: MyString
+  no_of_chances: MyString
+  illiteracy_eradication: MyString
+  twelfth_yop: MyString
+  twelfth_yos: MyString
+  twelfth_regno: MyString
+  twelfth_institution: MyString
+  twelfth_tc_no: MyString
+  twelfth_tc_date: 2015-09-03
+  tenth_yop: MyString
+  tenth_yos: MyString
+  tenth_regno: MyString
+  tenth_institution: MyString
+  email: MyString
+  aadhar_no: MyString
+  mobile_no: MyString
+  phone_no: MyString
+  bank_account: MyString
