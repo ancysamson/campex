@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831043314) do
+ActiveRecord::Schema.define(version: 20150904041241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,16 @@ ActiveRecord::Schema.define(version: 20150831043314) do
 
   add_index "terms", ["batch_id"], name: "index_terms_on_batch_id", using: :btree
 
+  create_table "timetables", force: :cascade do |t|
+    t.integer  "term_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "timetables", ["term_id"], name: "index_timetables_on_term_id", using: :btree
+
   add_foreign_key "batches", "courses"
   add_foreign_key "course_types", "departments"
   add_foreign_key "courses", "course_types"
@@ -192,4 +202,5 @@ ActiveRecord::Schema.define(version: 20150831043314) do
   add_foreign_key "staffs", "staff_grades"
   add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
+  add_foreign_key "timetables", "terms"
 end
