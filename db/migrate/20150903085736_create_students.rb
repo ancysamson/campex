@@ -8,8 +8,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :birth_place
       t.string :born_in
       t.string :religion
-      t.belongs_to :reservation_category, index: true, foreign_key: true
-      t.belongs_to :caste, index: true, foreign_key: true
       t.string :nationality_id
       t.string :address_line1
       t.string :address_line2
@@ -31,8 +29,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :ex_service
       t.string :nss
       t.string :ncc
-      t.belongs_to :board, index: true, foreign_key: true
-      t.belongs_to :stream, index: true, foreign_key: true
       t.string :board_name
       t.string :year_of_passing
       t.string :blind
