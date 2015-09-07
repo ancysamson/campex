@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :class_timings do
     resources :periods
   end
+  resources :students
   resources :boards
   resources :paper_types
   resources :courses, shallow: true do
