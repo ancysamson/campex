@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @staff_grade.name %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @staff_grade.priority %>
+</p>
+
+<p>
+  <strong>Max periods per day:</strong>
+  <%= @staff_grade.max_periods_per_day %>
+</p>
+
+<p>
+  <strong>Max periods per week:</strong>
+  <%= @staff_grade.max_periods_per_week %>
+</p>
+
+<%= link_to 'Edit', edit_staff_grade_path(@staff_grade) %> |
+<%= link_to 'Back', staff_grades_path %>

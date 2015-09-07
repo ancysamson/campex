@@ -1,9 +1,28 @@
 Rails.application.routes.draw do
+  resources :timetables do
+    member do
+      match 'allot_periods', via: [:get, :post]
+      get 'get_paper_teachers'
+    end
+  end
+  resources :staffs do
+    member do
+      get 'assign_papers'
+    end
+  end
+  resources :staff_grades
+  resources :staff_positions
+  resources :staff_categories
+  resources :class_timings do
+    resources :periods
+  end
   resources :boards
   resources :paper_types
   resources :courses, shallow: true do
     resources :batches do
-      resources :terms
+      resources :terms do
+        resources :papers
+      end
     end
     
     collection do

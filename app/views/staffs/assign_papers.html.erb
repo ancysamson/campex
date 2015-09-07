@@ -1,0 +1,4 @@
+<%= form_for(@staff) do |f| %>
+  <%= f.collection_check_boxes(:paper_ids, Paper.all, :id, :paper_details) %>
+  <%= f.submit "Assign" %>
+<% end %>

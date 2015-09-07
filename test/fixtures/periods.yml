@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_time: 2015-08-21 06:02:28
+  end_time: 2015-08-21 06:02:28
+  is_break: false
+  class_timing_id: 
+
+two:
+  name: MyString
+  start_time: 2015-08-21 06:02:28
+  end_time: 2015-08-21 06:02:28
+  is_break: false
+  class_timing_id: 

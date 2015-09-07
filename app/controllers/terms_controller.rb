@@ -11,6 +11,7 @@ class TermsController < ApplicationController
   # GET /terms/1
   # GET /terms/1.json
   def show
+    @paper = Paper.new
   end
 
   # GET /terms/new

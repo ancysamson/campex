@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817041951) do
+ActiveRecord::Schema.define(version: 20150907013610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20150817041951) do
   end
 
   add_index "batches", ["course_id"], name: "index_batches_on_course_id", using: :btree
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "subject_stucture"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "class_timings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "course_types", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +75,97 @@ ActiveRecord::Schema.define(version: 20150817041951) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "papers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "paper_type_id"
+    t.integer  "term_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "papers", ["paper_type_id"], name: "index_papers_on_paper_type_id", using: :btree
+  add_index "papers", ["term_id"], name: "index_papers_on_term_id", using: :btree
+
+  create_table "papers_staffs", id: false, force: :cascade do |t|
+    t.integer "paper_id"
+    t.integer "staff_id"
+  end
+
+  add_index "papers_staffs", ["paper_id"], name: "index_papers_staffs_on_paper_id", using: :btree
+  add_index "papers_staffs", ["staff_id"], name: "index_papers_staffs_on_staff_id", using: :btree
+
+  create_table "periods", force: :cascade do |t|
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.boolean  "is_break"
+    t.integer  "class_timing_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "periods", ["class_timing_id"], name: "index_periods_on_class_timing_id", using: :btree
+
+  create_table "staff_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staff_grades", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "priority"
+    t.integer  "max_periods_per_day"
+    t.integer  "max_periods_per_week"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "staff_positions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "staff_category_id"
+  end
+
+  add_index "staff_positions", ["staff_category_id"], name: "index_staff_positions_on_staff_category_id", using: :btree
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "staff_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_joining"
+    t.string   "email"
+    t.string   "gender"
+    t.date     "dob"
+    t.integer  "department_id"
+    t.integer  "staff_position_id"
+    t.integer  "staff_grade_id"
+    t.string   "qualification"
+    t.text     "experience_info"
+    t.integer  "experience_years"
+    t.integer  "experience_months"
+    t.string   "marital_status"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.string   "spouse_name"
+    t.string   "blood_group"
+    t.string   "nationality"
+    t.string   "address"
+    t.string   "mobile_no"
+    t.string   "bank_account_no"
+    t.string   "pan_no"
+    t.string   "adhaar_no"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "staffs", ["department_id"], name: "index_staffs_on_department_id", using: :btree
+  add_index "staffs", ["staff_grade_id"], name: "index_staffs_on_staff_grade_id", using: :btree
+  add_index "staffs", ["staff_position_id"], name: "index_staffs_on_staff_position_id", using: :btree
+
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
@@ -75,8 +179,52 @@ ActiveRecord::Schema.define(version: 20150817041951) do
 
   add_index "terms", ["batch_id"], name: "index_terms_on_batch_id", using: :btree
 
+  create_table "timetable_entries", force: :cascade do |t|
+    t.integer  "timetable_id"
+    t.integer  "period_id"
+    t.integer  "staff_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "wday"
+    t.string   "type"
+    t.integer  "paper_id"
+  end
+
+  add_index "timetable_entries", ["paper_id"], name: "index_timetable_entries_on_paper_id", using: :btree
+  add_index "timetable_entries", ["period_id"], name: "index_timetable_entries_on_period_id", using: :btree
+  add_index "timetable_entries", ["staff_id"], name: "index_timetable_entries_on_staff_id", using: :btree
+  add_index "timetable_entries", ["timetable_id"], name: "index_timetable_entries_on_timetable_id", using: :btree
+
+  create_table "timetables", force: :cascade do |t|
+    t.integer  "term_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "class_timing_id"
+  end
+
+  add_index "timetables", ["class_timing_id"], name: "index_timetables_on_class_timing_id", using: :btree
+  add_index "timetables", ["term_id"], name: "index_timetables_on_term_id", using: :btree
+
   add_foreign_key "batches", "courses"
   add_foreign_key "course_types", "departments"
   add_foreign_key "courses", "course_types"
+  add_foreign_key "papers", "paper_types"
+  add_foreign_key "papers", "terms"
+  add_foreign_key "papers_staffs", "papers"
+  add_foreign_key "papers_staffs", "staffs"
+  add_foreign_key "periods", "class_timings"
+  add_foreign_key "staff_positions", "staff_categories"
+  add_foreign_key "staffs", "departments"
+  add_foreign_key "staffs", "staff_grades"
+  add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
+  add_foreign_key "timetable_entries", "papers"
+  add_foreign_key "timetable_entries", "periods"
+  add_foreign_key "timetable_entries", "staffs"
+  add_foreign_key "timetable_entries", "timetables"
+  add_foreign_key "timetables", "class_timings"
+  add_foreign_key "timetables", "terms"
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timetable_id: 
+  period_id: 
+  staff_id: 
+  teacher_id: 1
+
+two:
+  timetable_id: 
+  period_id: 
+  staff_id: 
+  teacher_id: 1

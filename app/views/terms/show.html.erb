@@ -20,5 +20,42 @@
   <%= @term.end_date %>
 </p>
 
+<br>
+
+<%= form_for [@term, @paper], remote: true do |f| %>
+  <%= f.hidden_field :term_id, value: @term.id %>
+  <%= f.text_field :name, placeholder: "Paper Name" %>
+  <%= f.text_field :code, placeholder: "Paper Code" %>
+  <%= f.select :paper_type_id, options_from_collection_for_select(PaperType.all, :id, :name) %>
+  <%= f.submit "Add New" %>
+<% end %>
+
+<h3>Listing Papers</h1>
+
+<table id="papers_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Paper type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @term.papers.each do |paper| %>
+      <tr>
+        <td><%= paper.name %></td>
+        <td><%= paper.code %></td>
+        <td><%= paper.paper_type %></td>
+        <td><%= link_to 'Show', paper %></td>
+        <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
+        <td><%= link_to 'Destroy', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Edit', edit_term_path(@term) %> |
 <%= link_to 'Back', batch_terms_path(@term.batch) %>
