@@ -1,0 +1,35 @@
+<%= form_tag allot_periods_timetable_path, remote: true do %>
+  <table border="1">
+    <% 7.times do |wday| %>
+      <tr>
+        <td>
+          <%= "#{Date::DAYNAMES[-6 + wday]}" %>
+        </td>
+        <% @timetable.periods.each_with_index do |period, count| %>
+          <td>
+            <%= "Period #{count + 1}" %>
+            <br>
+            <%= "#{period.duration}" %>
+            <br>
+            <% @timetable_entry = @timetable_entries.where(wday: wday, period: period).first %>
+            <% if @timetable_entry %>
+              <%= @timetable_entry.teacher.first_name %>
+              <br>
+              <%= @timetable_entry.paper.name %>
+            <% else %>
+              <%= check_box_tag "timetable_entries[]", "#{wday}_#{period.id}" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+
+  <%= select_tag :paper_id, options_from_collection_for_select(Paper.where(term: @timetable.term.id), :id, :name) %>
+  <br>
+  <%= select_tag :teacher_id %>
+  <br>
+  <%= submit_tag "Submit" %>
+<% end %>

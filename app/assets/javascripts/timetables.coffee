@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "ready page:load", ->
+  $('#paper_id').on 'change', ->
+    $.ajax 'get_paper_teachers', 
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      paper_id: $('#paper_id').find(':selected').val()
+    }

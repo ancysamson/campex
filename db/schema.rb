@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904041241) do
+ActiveRecord::Schema.define(version: 20150907013610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,14 +179,33 @@ ActiveRecord::Schema.define(version: 20150904041241) do
 
   add_index "terms", ["batch_id"], name: "index_terms_on_batch_id", using: :btree
 
+  create_table "timetable_entries", force: :cascade do |t|
+    t.integer  "timetable_id"
+    t.integer  "period_id"
+    t.integer  "staff_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "wday"
+    t.string   "type"
+    t.integer  "paper_id"
+  end
+
+  add_index "timetable_entries", ["paper_id"], name: "index_timetable_entries_on_paper_id", using: :btree
+  add_index "timetable_entries", ["period_id"], name: "index_timetable_entries_on_period_id", using: :btree
+  add_index "timetable_entries", ["staff_id"], name: "index_timetable_entries_on_staff_id", using: :btree
+  add_index "timetable_entries", ["timetable_id"], name: "index_timetable_entries_on_timetable_id", using: :btree
+
   create_table "timetables", force: :cascade do |t|
     t.integer  "term_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "class_timing_id"
   end
 
+  add_index "timetables", ["class_timing_id"], name: "index_timetables_on_class_timing_id", using: :btree
   add_index "timetables", ["term_id"], name: "index_timetables_on_term_id", using: :btree
 
   add_foreign_key "batches", "courses"
@@ -202,5 +221,10 @@ ActiveRecord::Schema.define(version: 20150904041241) do
   add_foreign_key "staffs", "staff_grades"
   add_foreign_key "staffs", "staff_positions"
   add_foreign_key "terms", "batches"
+  add_foreign_key "timetable_entries", "papers"
+  add_foreign_key "timetable_entries", "periods"
+  add_foreign_key "timetable_entries", "staffs"
+  add_foreign_key "timetable_entries", "timetables"
+  add_foreign_key "timetables", "class_timings"
   add_foreign_key "timetables", "terms"
 end

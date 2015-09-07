@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :class_timing %><br>
+    <%=  f.select :class_timing_id, options_from_collection_for_select(ClassTiming.all, :id, :name) %>
+  </div>
+  <div class="field">
     <%= f.label :term_id %><br>
     <%=  f.select :term_id, options_for_select(Course.current_term_of_batches) %>
   </div>

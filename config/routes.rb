@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :timetables
+  resources :timetables do
+    member do
+      match 'allot_periods', via: [:get, :post]
+      get 'get_paper_teachers'
+    end
+  end
   resources :staffs do
     member do
       get 'assign_papers'

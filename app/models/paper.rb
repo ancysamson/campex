@@ -9,4 +9,8 @@ class Paper < ActiveRecord::Base
   def paper_details
     "#{self.name} - #{self.batch} - #{self.course}"
   end
+
+  def to_s
+    self.code
+  end
 end
